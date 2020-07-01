@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %} User Details {% endblock %}
+{% block content %}
+<div class="row">
+    <h2>User Info:-</h2>
+    <div class="col-sm-12 mb-3 user_details">
+        {% for user_detail in user %}
+        <span>Username</span><div>{{ user_detail.username }}</div>
+        <hr>
+        <span>Email</span><div>{{ user_detail.email }}</div>
+        <hr>
+        <span>LinkedIn</span><div>{{ user_detail.meta.linkedin }}</div>
+        <hr>
+        <span>Github</span><div>{{ user_detail.meta.github }}</div>
+        <hr>
+        <span>Twitter</span><div>{{ user_detail.meta.twitter }}<div>
+        <hr>
+        {% endfor %}
+    </div>
+    <button class="btn mb-2" style="background-color: #008CBA;display: flex;margin: auto">
+        <a href="{% url 'logout' %}">Log Out</a>
+    </button>
+</div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %} Log In {% endblock %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <form class="col-md-6" action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            <label for="email">Email</label>
+            <input type="text" name="email" />
+
+            <label for="password">Password</label>
+            <input type="password" name="password" />
+
+            <input class=" my-3 submit-btn btn btn-primary" type="submit" />
+        </form>
+
+         <div class="col-md-6 mx-auto social-container my-2 order-md-1">
+             <button class="btn mb-2" style="background-color: #008CBA;">
+                 <a href="{% url 'social:begin' 'linkedin-oauth2' %}">Login with LinkedIn</a>
+             </button>
+             <button class="btn mb-2" style="background-color: black;">
+                 <a href="{% url 'social:begin' 'github' %}">Login with Github</a>
+             </button>
+             <button class="btn mb-2" style="background-color: #008CBA;">
+                 <a href="{% url 'social:begin' 'twitter' %}">Login with Twitter</a>
+             </button>
+         </div>
+    </div>
+</div>
+
+{% endblock %}

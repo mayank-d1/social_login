@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %} Home {% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-sm-12 mb-3">
+        <h4 class="text-center"> Welcome {{ user.username }} </h4>
+    </div>
+    <h2>All users</h2>
+    <div class="col-sm-12 mb-3">
+    {% for user in users %}
+        <div>
+            <a href="{% url 'home' user_id=user.id %}">{{ user }}</a>
+        </div>
+    {% endfor %}
+    </div>
+    <button class="btn mb-2" style="background-color: #008CBA;display: flex;margin: auto">
+        <a href="{% url 'logout' %}">Log Out</a>
+    </button>
+    <button class="btn mb-2" style="background-color: #008CBA;display: flex;margin: auto">
+        <a href="{% url 'set_password' user_id=user.id %}">Set Password</a>
+    </button>
+</div>
+{% endblock %}
